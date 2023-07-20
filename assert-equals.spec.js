@@ -69,4 +69,16 @@ describe("assertEquals", () => {
       ).toThrow();
     });
   });
+
+  describe("when expected and actual are different length arrays", () => {
+    it("throws an error", () => {
+      // Call assertEquals with different length array arguments and expect it to throw an error
+      expect(() =>
+        assertEquals(
+          [-1, 1984, "a", "b", "c", 0, -1882, 42],
+          [-10, 4819, "d", "e", "f", 0, 1882]
+        )
+      ).toThrow();
+    });
+  });
 });
