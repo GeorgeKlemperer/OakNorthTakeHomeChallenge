@@ -72,10 +72,10 @@ describe("assertEquals", () => {
       expect(() =>
         assertEquals(
           [-1, 1984, "a", "b", "c", 0, -1882, 42],
-          ["-1", 1984, "a", "b", "c", 0, -1882, 42]
+          [-1, 1984, "a", "b", "c", "0", -1882, 42]
         )
       ).toThrow(
-        "Assertion failed: Expected type number but received type string."
+        "Assertion failed: Expected type number but received type string at index 5."
       );
     });
   });
@@ -88,7 +88,9 @@ describe("assertEquals", () => {
           [-1, 1984, "a", "b", "c", 0, -1882, 42],
           [-1, 4819, "d", "e", "f", 0, 1882, 42]
         )
-      ).toThrow("Assertion failed: Expected 1984 but received 4819.");
+      ).toThrow(
+        "Assertion failed: Expected 1984 but received 4819 at index 1."
+      );
     });
   });
 
