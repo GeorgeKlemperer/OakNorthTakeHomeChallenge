@@ -21,14 +21,14 @@ function assertEquals(expected, actual) {
         throw new Error(
           `Assertion failed: Expected type ${typeof expected[
             i
-          ]} but received type ${typeof actual[i]}.`
+          ]} but received type ${typeof actual[i]} at index ${i}.`
         );
       }
 
       // Check all array arguments are equal
       if (expected[i] !== actual[i]) {
         throw new Error(
-          `Assertion failed: Expected ${expected[i]} but received ${actual[i]}.`
+          `Assertion failed: Expected ${expected[i]} but received ${actual[i]} at index ${i}.`
         );
       }
     }
