@@ -66,18 +66,6 @@ describe("assertEquals", () => {
     });
   });
 
-  describe("when expected and actual are different arrays", () => {
-    it("throws an error with correct message", () => {
-      // Call assertEquals with different array arguments and expect it to throw an error
-      expect(() =>
-        assertEquals(
-          [-1, 1984, "a", "b", "c", 0, -1882, 42],
-          [-1, 4819, "d", "e", "f", 0, 1882, 42]
-        )
-      ).toThrow("Assertion failed: Expected 1984 but received 4819.");
-    });
-  });
-
   describe("when expected and actual are arrays with a different argument type", () => {
     it("throws an error with correct message", () => {
       // Call assertEquals with different array arguments and expect it to throw an error
@@ -89,6 +77,18 @@ describe("assertEquals", () => {
       ).toThrow(
         "Assertion failed: Expected type number but received type string."
       );
+    });
+  });
+
+  describe("when expected and actual are different arrays", () => {
+    it("throws an error with correct message", () => {
+      // Call assertEquals with different array arguments and expect it to throw an error
+      expect(() =>
+        assertEquals(
+          [-1, 1984, "a", "b", "c", 0, -1882, 42],
+          [-1, 4819, "d", "e", "f", 0, 1882, 42]
+        )
+      ).toThrow("Assertion failed: Expected 1984 but received 4819.");
     });
   });
 
