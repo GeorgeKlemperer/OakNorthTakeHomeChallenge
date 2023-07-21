@@ -32,4 +32,8 @@ function assertEquals(expected, actual) {
   }
 }
 
+// function assertEquals(expected, actual) {
+//   expect(actual).toEqual(expected);
+// }
+
 module.exports = assertEquals;
