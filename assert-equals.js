@@ -1,49 +1,55 @@
-function assertEquals(expected, actual) {
-  // Check arguments are same type
+// Helper function to compare argument types
+function assertSameType(expected, actual) {
   if (typeof expected !== typeof actual) {
     throw new Error(
       `Assertion failed: Expected type ${typeof expected} but received type ${typeof actual}.`
     );
   }
+}
 
-  // Check if arguments are arrays (as in javascript array/object strict equality returns true only if they reference the same object)
-  if (typeof expected === "object") {
-    // Check if arrays are same length
-    if (expected.length !== actual.length) {
+// Helper function to handle array equality (as javascript array strict equality tests for same reference)
+function assertArrayEquality(expected, actual) {
+  // Checks for array length equality
+  if (expected.length !== actual.length) {
+    throw new Error(
+      `Assertion failed: Expected array length ${expected.length} but received ${actual.length}.`
+    );
+  }
+
+  // Check all array elements are the same type
+  for (let i = 0; i < actual.length; i++) {
+    if (typeof expected[i] !== typeof actual[i]) {
       throw new Error(
-        `Assertion failed: Expected array length ${expected.length} but received ${actual.length}.`
+        `Assertion failed: Expected type ${typeof expected[
+          i
+        ]} but received type ${typeof actual[i]} at index ${i}.`
       );
     }
 
-    // Check all array elements are the same type
-    for (let i = 0; i < actual.length; i++) {
-      if (typeof expected[i] !== typeof actual[i]) {
-        throw new Error(
-          `Assertion failed: Expected type ${typeof expected[
-            i
-          ]} but received type ${typeof actual[i]} at index ${i}.`
-        );
-      }
-
-      // Check all array arguments are equal
-      if (expected[i] !== actual[i]) {
-        throw new Error(
-          `Assertion failed: Expected ${expected[i]} but received ${actual[i]} at index ${i}.`
-        );
-      }
+    // Check all array arguments are equal
+    if (expected[i] !== actual[i]) {
+      throw new Error(
+        `Assertion failed: Expected ${expected[i]} but received ${actual[i]} at index ${i}.`
+      );
     }
-
-    return true; // All elements in the array are equal
   }
+}
 
-  // Check if arguemnts are equal
-  if (expected === actual) {
-    return true;
+// Equality function
+function assertEquals(expected, actual) {
+  assertSameType(expected, actual);
+
+  if (Array.isArray(expected)) {
+    assertArrayEquality(expected, actual);
   } else {
-    throw new Error(
-      `Assertion failed: Expected ${expected} but received ${actual}.`
-    );
+    if (expected !== actual) {
+      throw new Error(
+        `Assertion failed: Expected ${expected} but received ${actual}.`
+      );
+    }
   }
+
+  return true; // Arguments are equal
 }
 
 // function assertEquals(expected, actual) {
