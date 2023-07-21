@@ -12,6 +12,16 @@ function assertEquals(expected, actual) {
       );
     }
 
+    for (let i = 0; i < actual.length; i++) {
+      if (typeof expected[i] !== typeof actual[i]) {
+        throw new Error(
+          `Assertion failed: Expected type ${typeof expected[
+            i
+          ]} but received type ${typeof actual[i]}.`
+        );
+      }
+    }
+
     for (let i = 0; i < expected.length; i++) {
       if (expected[i] !== actual[i]) {
         throw new Error(
