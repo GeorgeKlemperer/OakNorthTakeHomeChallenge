@@ -24,10 +24,8 @@ function assertEquals(expected, actual) {
           ]} but received type ${typeof actual[i]}.`
         );
       }
-    }
 
-    // Check all array arguments are equal
-    for (let i = 0; i < expected.length; i++) {
+      // Check all array arguments are equal
       if (expected[i] !== actual[i]) {
         throw new Error(
           `Assertion failed: Expected ${expected[i]} but received ${actual[i]}.`
