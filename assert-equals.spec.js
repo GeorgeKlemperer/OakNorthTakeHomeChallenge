@@ -105,4 +105,19 @@ describe("assertEquals", () => {
       ).toThrow("Assertion failed: Expected array length 8 but received 7.");
     });
   });
+
+  describe("when expected and actual are both undefined", () => {
+    it("returns without throwing an error", () => {
+      expect(() => assertEquals(undefined, undefined)).not.toThrow();
+    });
+  });
+
+  describe("when one of expected or actual is undefined", () => {
+    it("throws an error with correct message", () => {
+      // Call assertEquals with one undefined argument
+      expect(() => assertEquals(42, undefined)).toThrow(
+        "Assertion failed: Expected type number but received type undefined."
+      );
+    });
+  });
 });
