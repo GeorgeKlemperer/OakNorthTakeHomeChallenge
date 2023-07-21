@@ -3,6 +3,7 @@ const assertEquals = require("./assert-equals");
 describe("assertEquals", () => {
   describe("when expected and actual are the same string", () => {
     it("returns without throwing an error", () => {
+      //Call assertEquals with identical string arguments
       expect(() => assertEquals("abc", "abc")).not.toThrow();
     });
   });
@@ -18,6 +19,7 @@ describe("assertEquals", () => {
 
   describe("when expected and actual are the same number", () => {
     it("returns without throwing an error", () => {
+      //Call assertEquals with identical number arguments
       expect(() => assertEquals(42, 42)).not.toThrow();
     });
   });
@@ -42,6 +44,7 @@ describe("assertEquals", () => {
 
   describe("when expected and actual are the same boolean", () => {
     it("returns without throwing an error", () => {
+      //Call assertEquals with identical boolean arguments
       expect(() => assertEquals(true, true)).not.toThrow();
     });
   });
@@ -57,6 +60,7 @@ describe("assertEquals", () => {
 
   describe("when expected and actual are the same array", () => {
     it("returns without throwing an error", () => {
+      //Call assertEquals with identical array arguments
       expect(() =>
         assertEquals(
           [-1, 1984, "a", "b", "c", 0, -1882, 42],
@@ -108,13 +112,14 @@ describe("assertEquals", () => {
 
   describe("when expected and actual are both undefined", () => {
     it("returns without throwing an error", () => {
+      //Call assertEquals with two undefine arguments
       expect(() => assertEquals(undefined, undefined)).not.toThrow();
     });
   });
 
   describe("when one of expected or actual is undefined", () => {
     it("throws an error with correct message", () => {
-      // Call assertEquals with one undefined argument
+      // Call assertEquals with one defined and one undefined argument
       expect(() => assertEquals(42, undefined)).toThrow(
         "Assertion failed: Expected type number but received type undefined."
       );
